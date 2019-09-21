@@ -1,0 +1,15 @@
+{
+  "solargraph.diagnostics": true,
+  "coc.preferences.formatOnSaveFiletypes": ["ruby","typescript", "typescript.tsx", "json"],
+  "solargraph.completion": true,
+  "solargraph.formatting": true,
+  "typescript.implementationsCodeLens.enable": false,
+  "typescript.referencesCodeLens.enable": false,
+  "codeLens.enable": true,
+  "tslint.autoFixOnSave": true,
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+}

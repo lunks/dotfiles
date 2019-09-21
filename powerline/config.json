@@ -1,0 +1,42 @@
+{
+  "common": {
+    "term_truecolor": true
+  },
+  "ext": {
+    "ipython": {
+      "colorscheme": "default",
+      "theme": "in",
+      "local_themes": {
+        "rewrite": "rewrite",
+        "out": "out",
+        "in2": "in2"
+      }
+    },
+    "pdb": {
+      "colorscheme": "default",
+      "theme": "default"
+    },
+    "shell": {
+      "components": "tmux"
+    },
+    "tmux": {
+      "colorscheme": "gruvbox_dark",
+      "theme": "default"
+    },
+    "vim": {
+      "colorscheme": "default",
+      "theme": "default",
+      "local_themes": {
+        "__tabline__": "tabline",
+        "cmdwin": "cmdwin",
+        "help": "help",
+        "quickfix": "quickfix"
+      }
+    },
+    "wm": {
+      "colorscheme": "default",
+      "theme": "default",
+      "update_interval": 2
+    }
+  }
+}
