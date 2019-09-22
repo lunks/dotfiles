@@ -8,6 +8,7 @@ tap 'homebrew/core'
 tap 'homebrew/services'
 tap 'rockymadden/rockymadden'
 brew 'antigen'
+brew 'asdf'
 brew 'openssl'
 brew 'aria2'
 brew 'python'
@@ -23,7 +24,7 @@ brew 'go'
 brew 'dmg2img'
 brew 'imagemagick'
 brew 'dos2unix'
-brew 'elasticsearch', restart_service: true
+brew 'elasticsearch', restart_service: :changed
 brew 'ffmpeg'
 brew 'fping'
 brew 'fzf'
@@ -36,16 +37,16 @@ brew 'haskell-stack'
 brew 'hub'
 brew 'make'
 brew 'media-info'
-brew 'memcached', restart_service: true
+brew 'memcached', restart_service: :changed
 brew 'mono'
 brew 'namebench'
 brew 'neofetch'
 brew 'neovim'
 brew 'poppler'
-brew 'postgresql', restart_service: true
+brew 'postgresql', restart_service: :changed
 brew 'rclone'
 brew 'reattach-to-user-namespace'
-brew 'redis', restart_service: true
+brew 'redis', restart_service: :changed
 brew 'socat'
 brew 'the_silver_searcher'
 brew 'tmate'

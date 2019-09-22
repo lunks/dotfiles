@@ -53,8 +53,7 @@ eval "$(hub alias -s)"
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 # asdf
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. $(brew --prefix asdf)/asdf.sh
 
 
 # autojump
