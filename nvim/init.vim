@@ -44,7 +44,6 @@ set background=dark
 colorscheme gruvbox8_hard
 let &sbr=nr2char(8618).' '
 set signcolumn=yes
-"let g:gruvbox_plugin_hi_groups = 1
 hi SignColumn guibg='#1d2021'
 hi GitGutterAdd guibg='#1d2021' guifg='#b8bb26'
 hi GitGutterChange guibg='#1d2021' guifg='#fabd2f'

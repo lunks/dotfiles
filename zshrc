@@ -11,8 +11,6 @@ fi
 # antigen
 source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
-
-
 antigen bundles <<EOBUNDLES
 aws
 bundler
@@ -55,10 +53,10 @@ source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # asdf
 . $(brew --prefix asdf)/asdf.sh
 
-
 # autojump
 . /usr/local/etc/profile.d/z.sh
 
+# local stuff
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # FZF
@@ -71,8 +69,6 @@ alias plug="nvim +PlugInstall +PlugUpdate +PlugClean!"
 alias m="rake db:migrate db:test:prepare"
 alias v="nvim"
 alias cat="bat"
-
-
 
 # Always use Tmux
 if [[ -z "$TMUX" && -z "$VIM" ]]
