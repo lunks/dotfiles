@@ -1,0 +1,21 @@
+{
+  "segments": {
+    "left": [],
+    "right": [
+      {
+        "function": "powerline.segments.common.players.itunes",
+        "name": "player"
+      },
+      {
+        "function": "powerline.segments.common.net.network_load",
+        "args": {
+          "si_prefix": true,
+          "interval": 10
+        }
+      },
+      {
+        "function": "powerline.segments.common.sys.system_load"
+      }
+    ]
+  }
+}
