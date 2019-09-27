@@ -1,8 +1,5 @@
 {
-  "solargraph.diagnostics": true,
-  "coc.preferences.formatOnSaveFiletypes": ["ruby","typescript", "typescript.tsx", "json"],
-  "solargraph.completion": true,
-  "solargraph.formatting": true,
+  "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescript.tsx", "json"],
   "typescript.implementationsCodeLens.enable": false,
   "typescript.referencesCodeLens.enable": false,
   "codeLens.enable": true,
