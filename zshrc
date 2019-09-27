@@ -37,7 +37,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # android
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-13.jdk/Contents/Home
 
 # power line
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
