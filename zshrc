@@ -56,6 +56,9 @@ source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # autojump
 . /usr/local/etc/profile.d/z.sh
 
+powerline-daemon -q
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
 # local stuff
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
