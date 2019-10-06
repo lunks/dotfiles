@@ -85,8 +85,8 @@ then
   )
   if test $session_num
   then
-    exec tmux attach -t $session_num -u
+    exec tmux attach -t $session_num
   else
-    exec tmux -u
+    exec tmux
   fi
 fi
