@@ -8,6 +8,12 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+# path stuff
+export PATH=~/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # antigen
 source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
@@ -26,15 +32,11 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
 Tarrasch/zsh-bd
 zsh-users/zaw
+skywind3000/z.lua
 EOBUNDLES
 antigen theme lunks/minimim
 antigen apply
 
-# path stuff
-export PATH=~/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # android
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-13.jdk/Contents/Home
@@ -52,9 +54,6 @@ source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 # asdf
 . $(brew --prefix asdf)/asdf.sh
-
-# autojump
-. /usr/local/etc/profile.d/z.sh
 
 powerline-daemon -q
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
