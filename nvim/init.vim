@@ -1,3 +1,4 @@
+let g:polyglot_disabled = ['typescript']
 so ~/.config/nvim/bundle.vim
 
 let mapleader = ","
