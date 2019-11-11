@@ -1,4 +1,4 @@
-let g:colorizer_auto_filetype='css,html,typescript,typescript.tsx,vim'
+let g:colorizer_auto_filetype='css,html,typescript,typescript.tsx,vim,xml'
 "let terminal_color_0 = '#1d2021'
 "let terminal_color_1 = '#cc241d'
 "let terminal_color_2 = '#98971a'
