@@ -39,7 +39,9 @@ antigen apply
 
 
 # android
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-13.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export PATH="$PATH:/usr/local/share/android-sdk/platform-tools"
 
 # power line
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -71,6 +73,7 @@ alias plug="nvim +PlugInstall +PlugUpdate +PlugClean!"
 alias m="rake db:migrate db:test:prepare"
 alias v="nvim"
 alias cat="bat"
+function emulator { ( cd "/usr/local/Caskroom/android-sdk/4333796/tools/" && ./emulator "$@"; ) }
 
 # Always use Tmux
 if [[ -z "$TMUX" && -z "$VIM" ]]
