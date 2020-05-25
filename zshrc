@@ -37,7 +37,6 @@ EOBUNDLES
 antigen theme lunks/minimim
 antigen apply
 
-
 # android
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
@@ -66,6 +65,9 @@ powerline-daemon -q
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# ripgrep
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 # aliases
 alias j=z
