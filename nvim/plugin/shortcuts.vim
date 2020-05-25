@@ -19,6 +19,7 @@ nnoremap <silent> <leader><space> mm:%s/\s\+$//e<CR>`m
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 nmap <Leader>a :Ag<space>
+nmap <Leader>r :RG<CR>
 
 " run set test lib
 map <Leader>R :TestFile<CR>
