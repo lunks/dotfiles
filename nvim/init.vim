@@ -59,3 +59,15 @@ endif
 if has("mouse")
   set mouse=a
 endif
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "ruby",     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true              -- false will disable the whole extension
+  },
+  indent = {
+    enable = true              -- false will disable the whole extension
+  }
+}
+EOF

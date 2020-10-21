@@ -38,4 +38,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
 Plug 'chrisbra/Colorizer'
+Plug 'tpope/vim-speeddating'
+Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
