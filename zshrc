@@ -14,6 +14,8 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
 # antigen
 source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
@@ -75,6 +77,10 @@ alias plug="nvim +PlugInstall +PlugUpdate +PlugClean!"
 alias m="rake db:migrate db:test:prepare"
 alias v="nvim"
 alias cat="bat"
+alias up="docker-compose up"
+alias drc="docker-compose run web bundle exec rails console"
+alias dbash="docker-compose run web bash"
+
 function emulator { ( cd "/usr/local/Caskroom/android-sdk/4333796/tools/" && ./emulator "$@"; ) }
 
 # Always use Tmux
