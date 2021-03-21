@@ -1,6 +1,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export EDITOR=/usr/local/bin/nvim
+export EDITOR=nvim
 export COLORTERM=truecolor
 
 # autocompletion from brew
@@ -78,9 +78,9 @@ alias m="rake db:migrate db:test:prepare"
 alias v="nvim"
 alias cat="bat"
 alias up="docker-compose up"
-alias drc="docker-compose run web bundle exec rails console"
-alias dbash="docker-compose run web bash"
-
+alias dc="docker-compose"
+alias dcr="docker-compose run"
+alias dcrw="docker-compose run web"
 function emulator { ( cd "/usr/local/Caskroom/android-sdk/4333796/tools/" && ./emulator "$@"; ) }
 
 # Always use Tmux
@@ -100,3 +100,4 @@ then
     exec tmux
   fi
 fi
+export PATH="/usr/local/opt/neovim-openresty/bin:$PATH"

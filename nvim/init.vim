@@ -51,14 +51,11 @@ hi GitGutterChange guibg='#1d2021' guifg='#fabd2f'
 hi GitGutterDelete guibg='#1d2021' guifg='#cc241d'
 hi GitGutterChangeDelete guibg='#1d2021' guifg='#fb4934'
 
-if has("pythonx")
-  set pyx=3
-  set pyxversion=3
-endif
-
 if has("mouse")
   set mouse=a
 endif
+
+let g:polyglot_disabled = ['autoindent']
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
