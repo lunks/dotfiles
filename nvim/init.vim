@@ -4,7 +4,20 @@ so ~/.config/nvim/bundle.vim
 let mapleader = ","
 
 " sensible settings
-set clipboard=unnamed
+set clipboard+=unnamedplus
+
+"let g:clipboard = {
+      "\   'name': 'lemonade',
+      "\   'copy': {
+      "\      '+': ['~/code/lemonade/lemonade', 'copy', '-'],
+      "\      '*': ['~/code/lemonade/lemonade', 'copy', '-'],
+      "\    },
+      "\   'paste': {
+      "\      '+': ['~/code/lemonade/lemonade', 'paste', '-'],
+      "\      '*': ['~/code/lemonade/lemonade', 'paste', '-'],
+      "\   },
+      "\   'cache_enabled': 1,
+      "\ }
 set encoding=utf-8
 set wildoptions=pum
 set wildmode=list:longest,list:full
@@ -24,6 +37,7 @@ set smartcase
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set splitright
 
 " fast
 set lazyredraw
@@ -42,7 +56,7 @@ set list lcs=trail:·,tab:»·
 set pumblend=30
 set completeopt=noinsert,menuone
 set background=dark
-colorscheme gruvbox8_hard
+colorscheme gruvbox
 let &sbr=nr2char(8618).' '
 set signcolumn=yes
 hi SignColumn guibg='#1d2021'
@@ -55,16 +69,13 @@ if has("mouse")
   set mouse=a
 endif
 
-let g:polyglot_disabled = ['autoindent']
+"let g:polyglot_disabled = ['autoindent']
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "ruby",     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true              -- false will disable the whole extension
-  },
-  indent = {
-    enable = true              -- false will disable the whole extension
-  }
+  highlight = { enable = true },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
 }
 EOF
