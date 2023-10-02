@@ -10,7 +10,6 @@ nmap <C-J> ]e
 vmap <C-K> [egv
 vmap <C-J> ]egv
 
-nnoremap - :Switch<cr>
 map //  :nohlsearch<CR>
 
 " strip trailing whitespace

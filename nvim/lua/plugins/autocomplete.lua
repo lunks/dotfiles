@@ -1,5 +1,17 @@
 return {
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  {
+    'L3MON4D3/LuaSnip',
+    lazy = true,
+    dependencies = {
+      'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets'
+    },
+    build = 'make install_jsregexp',
+    config = function ()
+      require 'luasnip'.setup {}
+      require 'luasnip.loaders.from_vscode'.lazy_load {}
+    end
+  },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -7,8 +19,7 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      'SirVer/ultisnips',
-      'quangnguyen30192/cmp-nvim-ultisnips'
+      'L3MON4D3/LuaSnip',
     },
     config = function ()
       local cmp = require 'cmp'
@@ -18,22 +29,32 @@ return {
         'confirm_done',
         cmp_autopairs.on_confirm_done()
       )
+      local has_words_before = function ()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        return (vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], true)[1] or ''):sub(cursor[2], cursor[2]):match
+            '%s'
+      end
+
+      local luasnip = require 'luasnip'
 
       cmp.setup {
         snippet = {
           expand = function (args)
-            vim.fn['UltiSnips#Anon'](args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
         mapping = cmp.mapping.preset.insert {
-          ['<Tab>'] = function (fallback)
+          ['<Tab>'] = cmp.mapping(function (fallback)
             if cmp.visible() then
               cmp.select_next_item()
-            else
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
               cmp.complete()
+            else
               fallback()
             end
-          end,
+          end, { 'i', 's' }),
           ['<Esc>'] = function (fallback)
             cmp.mapping.abort()
             fallback()
@@ -42,6 +63,7 @@ return {
         },
         sources = cmp.config.sources {
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
           { name = 'cmdline' },

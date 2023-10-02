@@ -1,7 +1,8 @@
 return {
-  'cryptomilk/nightcity.nvim',
-  'nvim-treesitter/nvim-treesitter',
-  'nvim-treesitter/nvim-treesitter-textobjects',
+  {
+    'cryptomilk/nightcity.nvim',
+    lazy = true
+  },
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,

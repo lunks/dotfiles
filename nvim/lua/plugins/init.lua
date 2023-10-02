@@ -52,5 +52,7 @@ return {
   },
   {
     'AndrewRadev/switch.vim',
+    keys = { '-' },
+    cmd = 'Switch'
   },
 }

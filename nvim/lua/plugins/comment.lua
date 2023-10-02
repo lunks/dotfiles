@@ -10,7 +10,7 @@ return {
       },
     },
     cmd = 'CommentToggle',
-    config = function ()
+    config = function()
       local comment = require 'nvim_comment'
       comment.setup {}
     end
