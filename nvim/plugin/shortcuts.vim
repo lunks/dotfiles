@@ -14,10 +14,10 @@ nnoremap - :Switch<cr>
 map //  :nohlsearch<CR>
 
 " strip trailing whitespace
-nnoremap <silent> <leader><space> mm:%s/\s\+$//e<CR>`m
+"nnoremap <silent> <leader><space> mm:%s/\s\+$//e<CR>`m
 
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
+"nmap sj :TSJSplit<cr>
+"nmap sk :TSJJoin<cr>
 nmap <Leader>a :Ag<space>
 nmap <Leader>r :RG<CR>
 
@@ -26,7 +26,7 @@ map <Leader>R :TestFile<CR>
 map <Leader>rn :TestNearest<CR>
 map <Leader>rr :TestLast<CR>
 
-command S Subvert
+"command S Subvert
 
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
