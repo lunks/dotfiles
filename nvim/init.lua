@@ -3,7 +3,7 @@ vim.g.mapleader = ','
 vim.o.wildmode = 'longest,list:longest,full'
 vim.o.clipboard = 'unnamedplus'
 vim.o.expandtab = true
-vim.o.shell = 'bash'
+vim.o.shell = 'zsh'
 vim.o.shiftround = true
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
@@ -22,17 +22,18 @@ vim.o.cmdheight = 2
 vim.o.scrolloff = 5
 vim.opt.listchars = {
   trail = '·',
-  tab = '»·'
+  tab = '»·',
 }
 vim.o.pumblend = 30
 vim.o.completeopt = 'noinsert,menuone'
 vim.o.signcolumn = 'yes'
 vim.o.number = true
 
-vim.api.nvim_create_user_command('Remove', function ()
+vim.api.nvim_create_user_command('Remove', function()
   vim.cmd [[!rm %]]
   vim.cmd [[bd]]
 end, { nargs = 0 })
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
