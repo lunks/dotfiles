@@ -25,10 +25,6 @@
   - plugin: ruby
 
 - pip:
-    file: python/python2.txt
-    binary: /usr/local/bin/pip
-
-- pip:
     file: python/python3.txt
     binary: /usr/local/bin/pip3
 
