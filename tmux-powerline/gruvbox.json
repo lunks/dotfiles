@@ -1,0 +1,253 @@
+{
+  "name": "gruvbox_dark",
+  "groups": {
+    "information:additional": {
+      "fg": "#bcbcbc",
+      "bg": "#585858",
+      "attrs": []
+    },
+    "information:regular": {
+      "fg": "#d0d0d0",
+      "bg": "#585858",
+      "attrs": [
+        "bold"
+      ]
+    },
+    "information:highlighted": {
+      "fg": "#ffffff",
+      "bg": "#585858",
+      "attrs": []
+    },
+    "information:priority": {
+      "fg": "#ffd700",
+      "bg": "#d75f00",
+      "attrs": []
+    },
+    "warning:regular": {
+      "fg": "#ffffff",
+      "bg": "#d70000",
+      "attrs": [
+        "bold"
+      ]
+    },
+    "critical:failure": {
+      "fg": "#ffffff",
+      "bg": "#5f0000",
+      "attrs": []
+    },
+    "critical:success": {
+      "fg": "#ffffff",
+      "bg": "#005f00",
+      "attrs": []
+    },
+    "background": {
+      "fg": "#ffffff",
+      "bg": [
+        "#1c1c1c",
+        "1d2021"
+      ],
+      "attrs": []
+    },
+    "background:divider": {
+      "fg": "#626262",
+      "bg": [
+        "#1c1c1c",
+        "1d2021"
+      ],
+      "attrs": []
+    },
+    "session": {
+      "fg": "#000000",
+      "bg": "#d0d0d0",
+      "attrs": [
+        "bold"
+      ]
+    },
+    "date": {
+      "fg": "#9e9e9e",
+      "bg": [
+        "#1c1c1c",
+        "1d2021"
+      ],
+      "attrs": []
+    },
+    "time": {
+      "fg": "#d0d0d0",
+      "bg": [
+        "#1c1c1c",
+        "1d2021"
+      ],
+      "attrs": [
+        "bold"
+      ]
+    },
+    "time:divider": {
+      "fg": "#626262",
+      "bg": [
+        "#1c1c1c",
+        "1d2021"
+      ],
+      "attrs": []
+    },
+    "email_alert": "warning:regular",
+    "hostname": {
+      "fg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "bg": [
+        "#ffffd7",
+        "#f9f5d7"
+      ],
+      "attrs": [
+        "bold"
+      ]
+    },
+    "weather": {
+      "fg": "#9e9e9e",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "weather_condition_hot": {
+      "fg": "#ffff87",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "weather_condition_snowy": {
+      "fg": "#87d7ff",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "weather_condition_rainy": {
+      "fg": "#87d7ff",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "uptime": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    },
+    "external_ip": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    },
+    "internal_ip": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    },
+    "network_load": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    },
+    "network_load:divider": "background:divider",
+    "system_load": {
+      "fg": "#9e9e9e",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "environment": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    },
+    "cpu_load_percent": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    },
+    "battery": {
+      "fg": "#9e9e9e",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "battery_full": {
+      "fg": "#800000",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "battery_empty": {
+      "fg": "#ffffff",
+      "bg": [
+        "#1c1c1c",
+        "#1d2021"
+      ],
+      "attrs": []
+    },
+    "player": {
+      "fg": "#d0d0d0",
+      "bg": "#000000",
+      "attrs": []
+    },
+    "user": {
+      "fg": "#ffffff",
+      "bg": "#0087af",
+      "attrs": [
+        "bold"
+      ]
+    },
+    "branch": {
+      "fg": "#bcbcbc",
+      "bg": "#303030",
+      "attrs": []
+    },
+    "branch_dirty": {
+      "fg": "#ffd700",
+      "bg": "#303030",
+      "attrs": []
+    },
+    "branch_clean": {
+      "fg": "#bcbcbc",
+      "bg": "#303030",
+      "attrs": []
+    },
+    "branch:divider": {
+      "fg": "#8a8a8a",
+      "bg": "#303030",
+      "attrs": []
+    },
+    "stash": "branch_dirty",
+    "stash:divider": "branch:divider",
+    "cwd": "information:additional",
+    "cwd:current_folder": "information:regular",
+    "cwd:divider": {
+      "fg": "#8a8a8a",
+      "bg": "#585858",
+      "attrs": []
+    },
+    "virtualenv": {
+      "fg": "#ffffff",
+      "bg": "#5fafd7",
+      "attrs": []
+    },
+    "attached_clients": {
+      "fg": "#9e9e9e",
+      "bg": "#121212",
+      "attrs": []
+    }
+  }
+}
