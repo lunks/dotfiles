@@ -38,3 +38,4 @@
   - tmux/install-tmux-plugin.sh
   - $(brew --prefix)/opt/fzf/install
   - bat cache -b
+  - defaults write -g ApplePressAndHoldEnabled -bool false
