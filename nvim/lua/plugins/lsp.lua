@@ -1,8 +1,16 @@
 return {
   {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+  {
     'creativenull/efmls-configs-nvim',
     dependencies = { 'neovim/nvim-lspconfig' },
-    lazy = true,
   },
   {
     'aznhe21/actions-preview.nvim',
@@ -43,11 +51,63 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    keys = { 'gd' },
     dependencies = { 'lukas-reineke/lsp-format.nvim' },
     config = function()
+      vim.keymap.set({ 'v', 'n' }, 'gd', vim.lsp.buf.definition)
+      vim.keymap.set({ 'v', 'n' }, 'gr', vim.lsp.buf.references)
       local lspconfig = require 'lspconfig'
       local lspformat = require 'lsp-format'
-      local languages = require 'efmls-configs.defaults'.languages()
+      lspformat.setup {}
+      local on_attach = lspformat.on_attach
+      local capabilities = lspformat.capabilities
+
+      require 'mason'.setup()
+      require 'mason-lspconfig'.setup()
+
+      -- lspconfig.lua_ls.setup {
+      --   on_attach = on_attach,
+      --   on_init = function(client)
+      --     local path = client.workspace_folders[1].name
+      --     if
+      --         not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc')
+      --     then
+      --       client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+      --         Lua = {
+      --           format = {
+      --             enable = true,
+      --           },
+      --           runtime = {
+      --             version = 'LuaJIT',
+      --           },
+      --           workspace = {
+      --             checkThirdParty = false,
+      --             library = {
+      --               vim.env.VIMRUNTIME,
+      --             },
+      --           },
+      --         },
+      --       })
+      --
+      --       client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+      --     end
+      --     return true
+      --   end,
+      -- }
+      lspconfig.vtsls.setup {
+        on_attach = on_attach,
+      }
+
+      lspconfig.eslint.setup{
+        on_attach = on_attach
+      }
+
+      local eslint = require('efmls-configs.linters.eslint')
+      local prettier = require('efmls-configs.formatters.prettier_d')
+      local languages = {
+        typescript = { prettier },
+      }
+
       local efmls_config = {
         filetypes = vim.tbl_keys(languages),
         settings = {
@@ -59,51 +119,9 @@ return {
           documentRangeFormatting = true,
         },
       }
-
-      require 'lspconfig'.efm.setup(vim.tbl_extend('force', efmls_config, {
-        -- Pass your custom lsp config below like on_attach and capabilities
-        --
-        -- on_attach = on_attach,
-        -- capabilities = capabilities,
+      lspconfig.efm.setup(vim.tbl_extend('force', efmls_config, {
+        on_attach = on_attach
       }))
-      lspformat.setup {}
-
-      local on_attach = lspformat.on_attach
-      require 'mason'.setup()
-      require 'mason-lspconfig'.setup()
-
-      lspconfig.lua_ls.setup {
-        on_attach = on_attach,
-        on_init = function(client)
-          local path = client.workspace_folders[1].name
-          if
-              not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc')
-          then
-            client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-              Lua = {
-                format = {
-                  enable = true,
-                },
-                runtime = {
-                  version = 'LuaJIT',
-                },
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME,
-                  },
-                },
-              },
-            })
-
-            client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
-          end
-          return true
-        end,
-      }
-      lspconfig.tsserver.setup {
-        on_attach = on_attach,
-      }
       lspconfig.jsonls.setup {
         on_attach = on_attach,
       }

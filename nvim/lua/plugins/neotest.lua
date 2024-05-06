@@ -15,6 +15,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
     "olimorris/neotest-rspec",
+    "nvim-neotest/nvim-nio" 
   },
   config = function()
     require("neotest").setup({

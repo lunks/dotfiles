@@ -18,7 +18,7 @@ return {
         }
       }
     end
-  },
+  }, 
   {
     'Wansmer/treesj',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
