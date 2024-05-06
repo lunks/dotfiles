@@ -1,45 +1,46 @@
 [user]
-	name = Pedro Nascimento
-	email = pnascimento@gmail.com
+  name = Pedro Nascimento
+  email = pnascimento@gmail.com
 [color]
-	status = auto
-	branch = auto
+  status = auto
+  branch = auto
 [color "status"]
-	changed = yellow
-	added = green
-	untracked = red
+  changed = yellow
+  added = green
+  untracked = red
 [alias]
-	cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
-	sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
-	prr = pull-request -o
-	prd = pull-request -o -d
-	co = checkout
-	sps = !git stash -q && git pull && git stash pop -q
+  cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+  sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
+  prr = pull-request -o
+  prd = pull-request -o -d
+  co = checkout
+  sps = !git stash -q && git pull && git stash pop -q
 [core]
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
-	pager = delta
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  pager = delta
 [push]
-	default = current
+  default = current
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [github]
-	user = lunks
+  user = lunks
 [pull]
-	rebase = true
+  rebase = true
 [hub]
-	protocol = ssh
+  protocol = ssh
 [rebase]
-	autosquash = true
+  autosquash = true
 [http]
-	postBuffer = 524288000
+  postBuffer = 524288000
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [diff]
-	colorMoved = default
+  colorMoved = default
+  tool = nvimdiff
 [delta]
-	features = line-numbers
-	syntax-theme = gruvbox
-	file-style = yellow
+  features = line-numbers
+  syntax-theme = gruvbox
+  file-style = yellow
 [init]
-	defaultBranch = main
+  defaultBranch = main
