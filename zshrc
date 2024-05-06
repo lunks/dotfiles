@@ -9,12 +9,10 @@ if type brew &>/dev/null; then
 fi
 
 # path stuff
-export PATH=~/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+export PATH=~/.bin:~/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
 # antigen
 source /usr/local/share/antigen/antigen.zsh
@@ -26,9 +24,10 @@ heroku
 git
 github
 git-prompt
-osx
+macos
 ruby
 rails
+shrink-path
 zsh-users/zsh-completions src
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
@@ -39,14 +38,6 @@ EOBUNDLES
 antigen theme lunks/minimim
 antigen apply
 
-# android
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export PATH="$PATH:/usr/local/share/android-sdk/platform-tools"
-
-# power line
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-
 # mmv (mmv *.c.orig orig/*.c)
 autoload -U zmv
 alias mmv='noglob zmv -W'
@@ -55,11 +46,9 @@ alias mmv='noglob zmv -W'
 eval "$(hub alias -s)"
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
-# asdf
-. $(brew --prefix asdf)/asdf.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 powerline-daemon -q
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # local stuff
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
@@ -100,4 +89,3 @@ then
     exec tmux
   fi
 fi
-export PATH="/usr/local/opt/neovim-openresty/bin:$PATH"
