@@ -1,3 +1,4 @@
+; vim: set filetype=gitconfig :
 [user]
   name = Pedro Nascimento
   email = pnascimento@gmail.com
