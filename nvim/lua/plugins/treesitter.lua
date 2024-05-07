@@ -14,6 +14,9 @@ return {
           additional_vim_regex_highlighting = false,
           use_languagetree = true
         },
+        indent = {
+          enable = true
+        },
         incremental_selection = { enable = true },
         textobjects = { enable = true },
       }
