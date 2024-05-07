@@ -8,14 +8,6 @@ export PATH=$PATH:~/.bin:~/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sb
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-. /usr/share/powerline/bindings/zsh/powerline.zsh
-
-. $HOME/.asdf/asdf.sh
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit
-compinit
 
 # antigen
 source ~/antigen/antigen.zsh
@@ -43,6 +35,9 @@ EOBUNDLES
 antigen theme lunks/minimim
 antigen apply
 
+autoload -Uz compinit
+compinit
+
 # mmv (mmv *.c.orig orig/*.c)
 autoload -U zmv
 alias mmv='noglob zmv -W'
@@ -53,12 +48,12 @@ eval "$(hub alias -s)"
 # local stuff
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
+[[ $(uname) == "Linux" ]] && source .zshrc.linux
+[[ $(uname) == "Darwin" ]] && source .zshrc.darwin
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
-
-# ripgrep
-export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 # aliases
 alias j=z

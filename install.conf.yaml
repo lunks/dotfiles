@@ -11,15 +11,15 @@
     ~/.config/nvim: nvim
     ~/.config/bat: bat
     ~/.zshrc: zshrc
+    ~/.zshrc.linux: zshrc.linux
+    ~/.zshrc.darwin: zshrc.darwin
     ~/.vim: nvim # for easier access
     ~/.gitconfig: git/config
     ~/.gitignore: git/ignore
 
 - shell:
-  - 
-    command: brew bundle --verbose --no-upgrade
-    stdin: true
-    stdout: true
+  - bash install.linux
+  - bash install.darwin
 
 - asdf:
   - plugin: nodejs
@@ -36,6 +36,4 @@
   - tic tmux/tmux-256color.terminfo
   - mkdir -p ~/code
   - tmux/install-tmux-plugin.sh
-  - $(brew --prefix)/opt/fzf/install
   - bat cache -b
-  - defaults write -g ApplePressAndHoldEnabled -bool false
