@@ -20,20 +20,6 @@
 - shell:
   - bash install.linux
   - bash install.darwin
-
-- asdf:
-  - plugin: nodejs
-    versions:
-      - 20.12.2
-  - plugin: ruby
-  - plugin: elixir
-
-- pipx:
-    file: python/python3.txt
-    binary: /usr/local/bin/pipx
-
-- shell:
-  - tic tmux/tmux-256color.terminfo
-  - mkdir -p ~/code
-  - tmux/install-tmux-plugin.sh
-  - bat cache -b
+  - bash install.asdf
+  - bash install.powerline
+  - bash install.post

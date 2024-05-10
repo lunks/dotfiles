@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [ ! -d "$HOME}.asdf" ]; then
+  git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.14.0
+fi
+
+. "$HOME/.asdf/asdf.sh"
+
+languages=(
+erlang
+elixir
+nodejs
+ruby
+rust
+)
+
+for language in "${languages[@]}"; do
+  asdf plugin add $language
+  asdf install $language latest
+done
+
+asdf install nodejs 20.12.2
