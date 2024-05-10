@@ -1,4 +1,3 @@
-brew "asdf"
 brew "autoconf"
 brew "coreutils"
 brew "bat"

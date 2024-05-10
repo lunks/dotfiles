@@ -8,6 +8,7 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+autoload -Uz compinit
 # path stuff
 export PATH=~/.bin:~/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -18,6 +19,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 source /usr/local/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
+asdf
 aws
 bundler
 heroku
@@ -45,10 +47,6 @@ alias mmv='noglob zmv -W'
 # git stuff
 eval "$(hub alias -s)"
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
-. $(brew --prefix asdf)/libexec/asdf.sh
-
-powerline-daemon -q
 
 # local stuff
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
