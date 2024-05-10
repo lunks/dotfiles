@@ -12,6 +12,7 @@ return {
       local actions = require 'telescope.actions'
       require 'telescope'.setup {
         defaults = {
+          file_ignore_patterns= { 'node_modules', '_build',  'deps', 'tmp'},
           mappings = {
             i = {
               ['<esc>'] = actions.close,
@@ -21,7 +22,7 @@ return {
       }
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<Leader>b', builtin.buffers)
-      vim.keymap.set('n', '<Leader>t', builtin.git_files)
+      vim.keymap.set('n', '<Leader>t', builtin.find_files)
       require 'telescope'.load_extension 'fzf'
     end,
   },

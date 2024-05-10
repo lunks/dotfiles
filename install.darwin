@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+[[ $(uname) != "Darwin" ]] && exit 0
+defaults write -g ApplePressAndHoldEnabled -bool false
+brew bundle --verbose --no-upgrade
+$(brew --prefix)/opt/fzf/install

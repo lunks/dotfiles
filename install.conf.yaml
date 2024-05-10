@@ -11,31 +11,15 @@
     ~/.config/nvim: nvim
     ~/.config/bat: bat
     ~/.zshrc: zshrc
+    ~/.zshrc.linux: zshrc.linux
+    ~/.zshrc.darwin: zshrc.darwin
     ~/.vim: nvim # for easier access
     ~/.gitconfig: git/config
     ~/.gitignore: git/ignore
 
 - shell:
-  - 
-    command: brew bundle --verbose --no-upgrade
-    stdin: true
-    stdout: true
-
-- asdf:
-  - plugin: nodejs
-    versions:
-      - 20.12.2
-  - plugin: ruby
-  - plugin: elixir
-
-- pipx:
-    file: python/python3.txt
-    binary: /usr/local/bin/pipx
-
-- shell:
-  - tic tmux/tmux-256color.terminfo
-  - mkdir -p ~/code
-  - tmux/install-tmux-plugin.sh
-  - $(brew --prefix)/opt/fzf/install
-  - bat cache -b
-  - defaults write -g ApplePressAndHoldEnabled -bool false
+  - bash install.linux
+  - bash install.darwin
+  - bash install.asdf
+  - bash install.powerline
+  - bash install.post

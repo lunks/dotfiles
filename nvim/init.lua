@@ -11,7 +11,8 @@ vim.o.splitright = true
 vim.o.smartcase = true
 vim.o.ignorecase = true
 vim.o.foldenable = false
-
+vim.o.termguicolors = true
+vim.opt.guicursor= "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,n:blinkwait15000-blinkoff700-blinkon1500,i-ci:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 vim.o.timeoutlen = 450
 vim.o.updatetime = 250
 vim.g.python3_host_prog = '/usr/bin/python3'
