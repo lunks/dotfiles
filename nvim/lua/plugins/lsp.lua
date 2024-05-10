@@ -23,14 +23,10 @@ return {
     end
   },
   {
-    'creativenull/efmls-configs-nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
-  },
-  {
     'aznhe21/actions-preview.nvim',
     keys = { 'gf' },
     config = function()
-      local actions_preview = require'actions-preview'
+      local actions_preview = require 'actions-preview'
       vim.keymap.set({ 'v', 'n' }, 'gf', actions_preview.code_actions)
 
       actions_preview.setup {
@@ -59,7 +55,7 @@ return {
       require 'mason'.setup()
       require 'mason-lspconfig'.setup {
         automatic_installation = true,
-        ensure_installed = { 'lua_ls', 'tsserver', 'jsonls' }
+        ensure_installed = { 'lua_ls', 'jsonls' }
       }
     end,
   },
@@ -72,35 +68,47 @@ return {
       local lspformat = require 'lsp-format'
       lspformat.setup {}
       local on_attach = lspformat.on_attach
-      local capabilities = lspformat.capabilities
 
+      local handlers = {
+        function(server_name)
+          local server = require("lspconfig")[server_name]
+          server.setup {
+            on_attach = on_attach,
+          }
+        end,
+        -- Next, you can provide targeted overrides for specific servers.
+        ["rust_analyzer"] = function()
+          require("rust-tools").setup {}
+        end,
+        ["lua_ls"] = function()
+          lspconfig.lua_ls.setup {
+            on_attach = on_attach,
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" }
+                }
+              }
+            }
+          }
+        end,
+        ["clangd"] = function()
+          local cmp_nvim_lsp = require "cmp_nvim_lsp"
+          lspconfig.clangd.setup {
+            on_attach = on_attach,
+            capabilities = cmp_nvim_lsp.default_capabilities(),
+            cmd = {
+              "clangd",
+              "--offset-encoding=utf-16",
+            }
+          }
+        end,
+      }
+
+      -- alt 1. Either pass handlers when setting up mason-lspconfig:
+      require("mason-lspconfig").setup({ handlers = handlers })
       require 'mason'.setup()
       require 'mason-lspconfig'.setup()
-
-      lspconfig.vtsls.setup {
-        on_attach = on_attach,
-      }
-
-      lspconfig.eslint.setup{
-        on_attach = on_attach
-      }
-
-      local eslint = require('efmls-configs.linters.eslint')
-      local prettier = require('efmls-configs.formatters.prettier_d')
-      local languages = {
-        typescript = { prettier },
-      }
-
-      local efmls_config = {
-        filetypes = vim.tbl_keys(languages),
-        settings = {
-          rootMarkers = { '.git/' },
-        },
-        init_options = {
-          documentFormatting = true,
-          documentRangeFormatting = true,
-        },
-      }
 
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -111,27 +119,29 @@ return {
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
       vim.keymap.set('n', 'K', vim.lsp.buf.hover)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references)
-
-      lspconfig.tsserver.setup {
-        on_attach = lspformat.on_attach,
-      }
-      lspconfig.jsonls.setup {
-        on_attach = lspformat.on_attach,
-      }
     end,
   },
   {
     "elixir-tools/elixir-tools.nvim",
     version = "*",
-    event = { "BufReadPre", "BufNewFile" },
+    filetypes = { "elixir", "heex" },
     config = function()
       local elixir = require("elixir")
       local elixirls = require("elixir.elixirls")
       local lspformat = require 'lsp-format'
 
       elixir.setup {
-        nextls = {enable = true, spitfire = true},
-        credo = {enable = true},
+        nextls = {
+          enable = true,
+          init_options = {
+            experimental = {
+              completions = {
+                enable = true
+              }
+            }
+          }
+        },
+        credo = { enable = true },
         elixirls = {
           enable = true,
           settings = elixirls.settings {
