@@ -1,0 +1,49 @@
+packages:
+  darwin:
+    brews:
+    - autoconf
+    - coreutils
+    - bat
+    - cmake
+    - dos2unix
+    - fzf
+    - gcc
+    - git-extras
+    - git-delta
+    - go
+    - hub
+    - neovim
+    - pipx
+    - rclone
+    - reattach-to-user-namespace
+    - speedtest-cli
+    - streamlink
+    - the_silver_searcher
+    - tmate
+    - tmux
+    - tree
+    - wget
+    - wtf
+    - zsh
+    - git
+    casks:
+    - aerial
+    - arc
+    - 1password
+    - discord
+    - discord@ptb
+    - grammarly-desktop
+    - kitty
+    - plex
+    - plexamp
+    - pop
+    - postico
+    - raycast
+    - slack
+    - soundsource
+    - spotify
+    - the-unarchiver
+    - todoist
+    - vlc
+    - schildichat
+    - xld

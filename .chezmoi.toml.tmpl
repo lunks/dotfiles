@@ -1,0 +1,15 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+
+encryption = "age"
+[age]
+    identity = "~/key.txt"
+    recipient = "age10ey0a9vrafasjxqsf4hkjzqnjxv3jfxqst0rydscsjaku07ujchsk9nv0h"
+[onepassword]
+    mode = "account"
+[data]
+    email = {{ $email | quote }}
+[merge]
+  command = "nvim"
+  args = ["-d", "{{ "{{" }} .Destination }}", "{{ "{{" }} .Source }}", "{{ "{{" }} .Target }}"]
+
+

@@ -4,8 +4,11 @@ These are my dotfiles.
 
 ## Usage
 
-1. Install XCode and Homebrew
-2. Run `./install`
+1. Install XCode, homebrew, 1password cli and chezmoi.
+2. Run: 
 
-Note that some small things might not work right away, mainly ruby and
-node related plugins on neovim.
+```shell
+chezmoi init --verbose https://github.com/$GITHUB_USERNAME/dotfiles.git
+chezmoi apply ~/key.txt
+chezmoi apply
+```

@@ -1,0 +1,48 @@
+[user]
+  name = Pedro Nascimento
+  email = pnascimento@gmail.com
+[color]
+  status = auto
+  branch = auto
+[color "status"]
+  changed = yellow
+  added = green
+  untracked = red
+[alias]
+  cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+  sed = ! git grep -z --full-name -l '.' | xargs -0 sed -i -e
+  prr = pull-request -o
+  prd = pull-request -o -d
+  co = checkout
+  sps = !git stash -q && git pull && git stash pop -q
+[core]
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  pager = delta
+[push]
+  default = current
+[branch]
+  autosetuprebase = always
+[github]
+  user = lunks
+[pull]
+  rebase = true
+[hub]
+  protocol = ssh
+[rebase]
+  autosquash = true
+[http]
+  postBuffer = 524288000
+[diff]
+  colorMoved = default
+[delta]
+  features = line-numbers
+  syntax-theme = gruvbox
+  file-style = yellow
+[init]
+  defaultBranch = main
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

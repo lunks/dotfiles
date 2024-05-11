@@ -1,0 +1,6 @@
+{{ if ne .chezmoi.os "darwin" -}}
+.config/lemonade.toml
+{{- end }}
+zshrc.darwin
+zshrc.linux
+README.md

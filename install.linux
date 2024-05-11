@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-[[ $(uname) != "Linux" ]] && exit 0
-# only debian for now
-[[ ! -f /etc/debian_version ]] && exit 0
-sudo apt-get -y install build-essential bat cmake ninja-build dmg2img \
-  ffmpeg fzf git jq yq git git-man postgresql silversearcher-ag \
-  tmux tree vim wget zsh zsh-syntax-highlighting zsh-autosuggestions \
-  pipx p7zip-full neovim
