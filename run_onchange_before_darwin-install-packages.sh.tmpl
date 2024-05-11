@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if eq .osid "darwin" -}}
 #!/usr/bin/env zsh
 
 brew bundle --no-lock --file=/dev/stdin <<EOF

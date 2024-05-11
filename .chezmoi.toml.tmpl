@@ -1,4 +1,8 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
 
 encryption = "age"
 [age]
@@ -8,6 +12,7 @@ encryption = "age"
     mode = "account"
 [data]
     email = {{ $email | quote }}
+    osid = {{ $osid | quote }}
 [merge]
   command = "nvim"
   args = ["-d", "{{ "{{" }} .Destination }}", "{{ "{{" }} .Source }}", "{{ "{{" }} .Target }}"]

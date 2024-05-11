@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.osRelease.id "debian" -}}
+{{ if eq .osid "linux-debian" -}}
 #!/usr/bin/env zsh
 sudo apt-get -y install build-essential bat cmake ninja-build dmg2img \
   ffmpeg fzf git jq yq git git-man postgresql silversearcher-ag \
