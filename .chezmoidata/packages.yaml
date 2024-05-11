@@ -11,6 +11,7 @@ packages:
     - git-extras
     - git-delta
     - go
+    - jq
     - hub
     - neovim
     - pipx
