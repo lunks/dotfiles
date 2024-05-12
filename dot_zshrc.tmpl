@@ -1,3 +1,4 @@
+bindkey -e
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=nvim
@@ -8,6 +9,22 @@ export PATH=$PATH:~/.bin:~/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sb
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+[ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
+[ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt APPEND_HISTORY            # append to history file
+setopt HIST_NO_STORE             # Don't store history commands
+
 
 zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
 
@@ -20,9 +37,6 @@ if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
   antidote bundle <${zsh_plugins} >|${zsh_plugins}.zsh
 fi
 
-# Source your static plugins file.
-source ${zsh_plugins}.zsh
-
 eval "$(chezmoi completion zsh)"
 
 autoload -Uz compinit
@@ -31,9 +45,14 @@ compinit
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
 
+# git stuff
+eval "$(hub alias -s)"
+
+eval "$(~/.local/bin/mise activate zsh)"
+MISE_ENV_FILE=.env
 
 # move a lot of files, syntax: mmv (mmv *.c.orig orig/*.c)
-autoload -U zmv
+autoload -Uz zmv
 alias mmv='noglob zmv -W'
 
 # local stuff
@@ -45,30 +64,34 @@ alias mmv='noglob zmv -W'
 {{-   include "zshrc.linux" -}}
 {{- end -}}
 
-# git stuff
-eval "$(hub alias -s)"
-
-eval "$(~/.local/bin/mise activate zsh)"
-MISE_ENV_FILE=.env
-
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export _ZL_MATCH_MODE=1
 
 # aliases
 alias j=z
-alias m="rake db:migrate db:test:prepare"
+#alias m="rake db:migrate db:test:prepare"
 alias v="nvim"
 alias cat="bat"
-alias up="docker-compose up"
-alias dc="docker-compose"
-alias dcr="docker-compose run"
-alias dcrw="docker-compose run web"
-alias fm="foreman start -f Procfile.local"
 alias ls="eza"
-alias l="ls"
-
-alias luamake=/home/lunks/code/lua-language-server/3rd/luamake/luamake
+alias l="ls -la --icons=auto --git --no-permissions -o --group-directories-first"
+alias m="mise"
+alias mi="mise install"
+alias mu="mise use"
+alias ch="chezmoi"
+alias cha="chezmoi apply && source ~/.zshrc"
+alias che="chezmoi edit $@ && cha"
+alias chsh="chezmoi edit ~/.zshrc && cha"
+alias chc="chezmoi edit-config && ch init"
+bindkey '\e[19~' autosuggest-accept
 
 eval $(ssh-agent -s) > /dev/null
 ssh-add -q
+
+function chpwd() {
+  tmux rename-window $(shrink_path -f)
+}
+
+# Source your static plugins file.
+source ${zsh_plugins}.zsh

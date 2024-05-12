@@ -11,7 +11,6 @@ packages:
     - elixir@latest
     - eza@latest
     - fd@latest
-    - fzf@latest
     - github-cli@latest
     - golang@latest
     - nodejs@latest
@@ -25,7 +24,6 @@ packages:
       - bat
       - cmake
       - dos2unix
-      - fzf
       - gcc
       - git-extras
       - git-delta

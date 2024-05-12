@@ -1,3 +1,4 @@
+ohmyzsh/ohmyzsh path:lib/directories.zsh, kind:defer
 ohmyzsh/ohmyzsh path:plugins/git kind:defer
 ohmyzsh/ohmyzsh path:plugins/github kind:defer
 

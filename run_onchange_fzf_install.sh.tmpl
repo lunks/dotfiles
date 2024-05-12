@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+{{ include (joinPath .chezmoi.homeDir ".fzf/install") | sha256sum }}
+{{ joinPath .chezmoi.homeDir ".fzf/install" }}
