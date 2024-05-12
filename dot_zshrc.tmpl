@@ -37,10 +37,10 @@ if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
   antidote bundle <${zsh_plugins} >|${zsh_plugins}.zsh
 fi
 
-eval "$(chezmoi completion zsh)"
-
 autoload -Uz compinit
 compinit
+
+eval "$(chezmoi completion zsh)"
 
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
