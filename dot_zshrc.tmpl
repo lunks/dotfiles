@@ -45,7 +45,7 @@ compinit
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
 
-# git stuff
+source ~/.github_token
 eval "$(hub alias -s)"
 
 eval "$(~/.local/bin/mise activate zsh)"
@@ -81,7 +81,7 @@ alias mi="mise install"
 alias mu="mise use"
 alias ch="chezmoi"
 alias cha="chezmoi apply && source ~/.zshrc"
-alias che="chezmoi edit $@ && cha"
+alias che="chezmoi edit"
 alias chsh="chezmoi edit ~/.zshrc && cha"
 alias chc="chezmoi edit-config && ch init"
 bindkey '\e[19~' autosuggest-accept
