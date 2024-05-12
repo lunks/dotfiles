@@ -9,35 +9,30 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# antigen
-source ~/antigen/antigen.zsh
-antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-aws
-bundler
-heroku
-git
-github
-git-prompt
-macos
-ruby
-rails
-shrink-path
-zsh-users/zsh-completions src
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-history-substring-search
-Tarrasch/zsh-bd
-shrink-path
-zsh-users/zaw
-skywind3000/z.lua
-EOBUNDLES
-antigen theme lunks/minimim
-antigen apply
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
+
+# Lazy-load antidote from its functions directory.
+fpath=(~/.antidote/functions $fpath)
+autoload -Uz antidote
+
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
+  antidote bundle <${zsh_plugins} >|${zsh_plugins}.zsh
+fi
+
+# Source your static plugins file.
+source ${zsh_plugins}.zsh
+
+eval "$(chezmoi completion zsh)"
 
 autoload -Uz compinit
 compinit
 
-# mmv (mmv *.c.orig orig/*.c)
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
+
+
+# move a lot of files, syntax: mmv (mmv *.c.orig orig/*.c)
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
@@ -70,10 +65,10 @@ alias dc="docker-compose"
 alias dcr="docker-compose run"
 alias dcrw="docker-compose run web"
 alias fm="foreman start -f Procfile.local"
+alias ls="eza"
+alias l="ls"
 
 alias luamake=/home/lunks/code/lua-language-server/3rd/luamake/luamake
 
 eval $(ssh-agent -s) > /dev/null
 ssh-add -q
-
-complete -C '/usr/local/bin/aws_completer' aws
