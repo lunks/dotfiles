@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
+eval "$(mise activate zsh --shims)"
+eval "$(mise activate zsh)"
 
-
-mise install -y {{- range .packages.mise }} {{ . }} {{- end }}
-
-
-mise install node@20.12.2
-mise install pipx:powerline-status
+mise install -y {{- range .packages.mise }} {{ . }} {{- end }} -q
+mise install node@20.12.2 -q
+mise install pipx:powerline-status -q

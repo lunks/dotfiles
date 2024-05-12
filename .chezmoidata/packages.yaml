@@ -9,14 +9,17 @@ packages:
     - delta@latest
     - erlang@latest
     - elixir@latest
-    - eza@latest
-    - fd@latest
     - github-cli@latest
     - golang@latest
     - nodejs@latest
     - ruby@latest
     - rust@latest
     - yarn@latest
+    - cargo:cargo-binstall@latest
+    - cargo:cargo-update@latest
+    - cargo:eza@latest
+    - cargo:fd-find@latest
+    - cargo:ripgrep@latest
   darwin:
     brews:
       - autoconf

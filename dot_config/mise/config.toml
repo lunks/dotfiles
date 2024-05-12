@@ -1,4 +1,7 @@
 [settings]
 experimental = true
+cargo_binstall = true
 [tools]
 rust = "latest"
+"cargo:cargo-binstall" = "latest"
+"cargo:eza" = "latest"

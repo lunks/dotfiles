@@ -40,16 +40,9 @@ fi
 autoload -Uz compinit
 compinit
 
-eval "$(chezmoi completion zsh)"
 
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
-
-source ~/.github_token
-eval "$(hub alias -s)"
-
-eval "$(~/.local/bin/mise activate zsh)"
-MISE_ENV_FILE=.env
 
 # move a lot of files, syntax: mmv (mmv *.c.orig orig/*.c)
 autoload -Uz zmv
@@ -92,6 +85,14 @@ ssh-add -q
 function chpwd() {
   tmux rename-window $(shrink_path -f)
 }
+
+source ~/.github_token
+eval "$(hub alias -s)"
+
+eval "$(~/.local/bin/mise activate zsh)"
+MISE_ENV_FILE=.env
+
+eval "$(chezmoi completion zsh)"
 
 # Source your static plugins file.
 source ${zsh_plugins}.zsh
