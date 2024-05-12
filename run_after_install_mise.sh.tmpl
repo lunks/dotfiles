@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+
+mise install -y {{- range .packages.mise }} {{ . }} {{- end }}
+
+
+mise install node@20.12.2
+mise install pipx:powerline-status

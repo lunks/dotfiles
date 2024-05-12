@@ -1,0 +1,4 @@
+[settings]
+experimental = true
+[tools]
+rust = "latest"

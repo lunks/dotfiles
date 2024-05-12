@@ -4,6 +4,18 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{ $miseos := .chezmoi.os }}
+# if .chezmoi.os equals darwin, use macos. if not, use the value in .chezmoi.os
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $miseos := "macos" -}}
+{{- end -}}
+
+[data]
 encryption = "age"
 [age]
     identity = "~/key.txt"
@@ -13,6 +25,7 @@ encryption = "age"
 [data]
     email = {{ $email | quote }}
     osid = {{ $osid | quote }}
+    miseos = {{ $miseos | quote }}
 [merge]
   command = "nvim"
   args = ["-d", "{{ "{{" }} .Destination }}", "{{ "{{" }} .Source }}", "{{ "{{" }} .Target }}"]
