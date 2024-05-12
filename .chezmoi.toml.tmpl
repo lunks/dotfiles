@@ -18,8 +18,8 @@
 [data]
 encryption = "age"
 [age]
-    identity = "~/key.txt"
-    recipient = "age10ey0a9vrafasjxqsf4hkjzqnjxv3jfxqst0rydscsjaku07ujchsk9nv0h"
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = {{ onepasswordRead "op://Personal/chezmoi/public-key" | quote}}
 [onepassword]
     mode = "account"
 [data]

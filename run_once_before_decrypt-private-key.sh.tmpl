@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
+    eval $(op signin)
+    mkdir -p "${HOME}/.config/chezmoi"
+    op read "op://Personal/chezmoi/password" > "${HOME}/.config/chezmoi/key.txt"
+    chmod 600 "${HOME}/.config/chezmoi/key.txt"
+fi
