@@ -1,5 +1,0 @@
-[".local/bin/mise"]
-type = "file"
-url = "https://mise.jdx.dev/mise-latest-{{ .miseos }}-{{ .chezmoi.arch }}"
-executable = true
-refreshPeriod = "1s"

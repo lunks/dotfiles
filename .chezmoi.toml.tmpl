@@ -12,7 +12,12 @@
 {{ $miseos := .chezmoi.os }}
 # if .chezmoi.os equals darwin, use macos. if not, use the value in .chezmoi.os
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $miseos := "macos" -}}
+{{-   $miseos = "macos" -}}
+{{- end -}}
+{{ $misearch := .chezmoi.arch }}
+# if .chezmoi.os equals darwin, use macos. if not, use the value in .chezmoi.os
+{{- if eq .chezmoi.arch "amd64" -}}
+{{-   $misearch = "x64" -}}
 {{- end -}}
 
 [data]
@@ -26,6 +31,7 @@ encryption = "age"
     email = {{ $email | quote }}
     osid = {{ $osid | quote }}
     miseos = {{ $miseos | quote }}
+    misearch = {{ $misearch | quote }}
 [merge]
   command = "nvim"
   args = ["-d", "{{ "{{" }} .Destination }}", "{{ "{{" }} .Source }}", "{{ "{{" }} .Target }}"]

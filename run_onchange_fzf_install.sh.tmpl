@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
-{{ include (joinPath .chezmoi.homeDir ".fzf/install") | sha256sum }}
-{{ joinPath .chezmoi.homeDir ".fzf/install" }}
+# {{ include (joinPath .chezmoi.homeDir ".fzf/install") | sha256sum }}
+{{ joinPath .chezmoi.homeDir ".fzf/install" }} --all
