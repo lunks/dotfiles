@@ -10,6 +10,39 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+eval "$(mise activate zsh)"
+eval "$(mise hook-env -s zsh)"
+
+{{ if eq .chezmoi.os "darwin" -}}
+{{-   include "zshrc.darwin" -}}
+{{- else if eq .chezmoi.os "linux" -}}
+{{-   include "zshrc.linux" -}}
+{{- end }}
+
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
+
+fpath=(~/.zsh_completions $fpath)
+# Lazy-load antidote from its functions directory.
+fpath=(~/.antidote/functions $fpath)
+autoload -Uz antidote
+
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
+  antidote bundle <${zsh_plugins} >|${zsh_plugins}.zsh
+fi
+
+autoload -Uz compinit
+compinit
+
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
+# move a lot of files, syntax: mmv (mmv *.c.orig orig/*.c)
+autoload -Uz zmv
+alias mmv='noglob zmv -W'
+
+# local stuff
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 [ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
 [ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
@@ -24,47 +57,11 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
-
-
-zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
-
-# Lazy-load antidote from its functions directory.
-fpath=(~/.antidote/functions $fpath)
-autoload -Uz antidote
-
-# Generate a new static file whenever .zsh_plugins.txt is updated.
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
-  antidote bundle <${zsh_plugins} >|${zsh_plugins}.zsh
-fi
-
-autoload -Uz compinit
-compinit
-
-
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
-
-# move a lot of files, syntax: mmv (mmv *.c.orig orig/*.c)
-autoload -Uz zmv
-alias mmv='noglob zmv -W'
-
-# local stuff
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
-{{- if eq .chezmoi.os "darwin" -}}
-{{-   include "zshrc.darwin" -}}
-{{- else if eq .chezmoi.os "linux" -}}
-{{-   include "zshrc.linux" -}}
-{{- end -}}
-
-# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export _ZL_MATCH_MODE=1
 
-# aliases
 alias j=z
-#alias m="rake db:migrate db:test:prepare"
 alias v="nvim"
 alias cat="bat"
 alias ls="eza"
@@ -91,8 +88,6 @@ eval "$(hub alias -s)"
 
 eval "$(~/.local/bin/mise activate zsh)"
 MISE_ENV_FILE=.env
-
-eval "$(chezmoi completion zsh)"
 
 # Source your static plugins file.
 source ${zsh_plugins}.zsh

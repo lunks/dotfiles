@@ -1,0 +1,5 @@
+[".local/bin/gh"]
+type = "file"
+url = {{ gitHubLatestReleaseAssetURL "github/gh-copilot" (printf "%s-%s" .chezmoi.os .chezmoi.arch) | quote }}
+executable = true
+refreshPeriod = "168h"

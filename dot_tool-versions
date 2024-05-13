@@ -1,7 +1,8 @@
-ruby 3.3.1
+ruby   3.3.1
 nodejs 20.12.2
-rust 1.78
+rust   1.78
 golang 1.22.3
 elixir 1.16.2-otp-26
-yarn latest
+yarn   latest
 erlang 26.2.5
+tmux   latest

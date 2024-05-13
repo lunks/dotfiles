@@ -5,3 +5,4 @@ cargo_binstall = true
 rust = "latest"
 "cargo:cargo-binstall" = "latest"
 "cargo:eza" = "latest"
+usage = "latest"
