@@ -82,8 +82,6 @@ setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export _ZL_MATCH_MODE=1
 
 alias j=z
@@ -99,6 +97,15 @@ alias cha="chezmoi apply && source ~/.zshrc"
 alias che="chezmoi edit"
 alias chsh="chezmoi edit ~/.zshrc && cha"
 alias chc="chezmoi edit-config && ch init"
+alias pr="gh f -p"
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_TMUX=1
+export FZF_CTRL_R_OPTS="--preview-window=hidden"
+export FZF_TMUX_OPTS="-p 75%,75%"
+export FZF_PREVIEW_COMMAND="if [[ -d {} ]]; then eza --icons=always --git --level 2 --tree --color=always --group-directories-first {}; elif [[ -f {} ]]; then bat --style=full --color=always {}; fi"
+export FZF_DEFAULT_OPTS="--border='rounded' --preview='$FZF_PREVIEW_COMMAND' --prompt='⌘ '"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '\e[19~' autosuggest-accept
 
 eval $(ssh-agent -s) > /dev/null
