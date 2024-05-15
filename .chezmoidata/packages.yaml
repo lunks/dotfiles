@@ -65,6 +65,7 @@ packages:
       - spotify
       - the-unarchiver
       - todoist
+      - tunnelblick
       - vlc
       - schildichat
       - xld
