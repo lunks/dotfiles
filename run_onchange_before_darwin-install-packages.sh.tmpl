@@ -9,5 +9,5 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{ end -}}
 EOF
-mkdir -p ~/.1password && ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+mkdir -p ~/.1password && [ ! -L ~/.1password/agent.sock ] && ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock || exit 0
 {{ end -}}
