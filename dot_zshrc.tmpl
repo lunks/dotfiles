@@ -60,6 +60,7 @@ autoload -Uz compinit
 compinit
 
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="z *"
 # move a lot of files, syntax: mmv (mmv *.c.orig orig/*.c)
 autoload -Uz zmv
@@ -109,7 +110,7 @@ export FZF_DEFAULT_OPTS="--border='rounded' --preview='$FZF_PREVIEW_COMMAND' --p
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '\e[19~' autosuggest-accept
 
-{{- if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" }}
 eval $(ssh-agent -s) > /dev/null
 ssh-add -q
 {{ end }}

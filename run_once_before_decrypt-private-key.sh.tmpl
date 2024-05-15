@@ -1,8 +1,7 @@
 #!/bin/sh
 
-{{- $interactive := stdinIsATTY -}}
 
-{{ if $interactive -}}
+{{ if .interactive -}}
 set -e
 if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
     eval $(op signin)

@@ -10,27 +10,25 @@
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
-{{ $miseos := .chezmoi.os }}
-# if .chezmoi.os equals darwin, use macos. if not, use the value in .chezmoi.os
+{{- $miseos := .chezmoi.os -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $miseos = "macos" -}}
 {{- end -}}
-{{ $misearch := .chezmoi.arch }}
-# if .chezmoi.os equals darwin, use macos. if not, use the value in .chezmoi.os
+{{- $misearch := .chezmoi.arch -}}
 {{- if eq .chezmoi.arch "amd64" -}}
 {{-   $misearch = "x64" -}}
 {{- end -}}
 
-[data]
-encryption = "age"
-{{ if $interactive -}}
+{{- if $interactive -}}
 [age]
     identity = "~/.config/chezmoi/key.txt"
     recipient = {{ onepasswordRead "op://Personal/chezmoi/public-key" | quote}}
 [onepassword]
     mode = "account"
-{{- end -}}
+{{- end }}
 [data]
+    encryption = "age"
+    interactive = {{ $interactive | quote }}
     email = {{ $email | quote }}
     osid = {{ $osid | quote }}
     miseos = {{ $miseos | quote }}
