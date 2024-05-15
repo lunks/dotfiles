@@ -1,5 +1,8 @@
 #!/bin/sh
 
+{{- $interactive := stdinIsATTY -}}
+
+{{ if $interactive -}}
 set -e
 if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
     eval $(op signin)
@@ -7,3 +10,4 @@ if [ ! -f "${HOME}/.config/chezmoi/key.txt" ]; then
     op read "op://Personal/chezmoi/password" > "${HOME}/.config/chezmoi/key.txt"
     chmod 600 "${HOME}/.config/chezmoi/key.txt"
 fi
+{{- end }}

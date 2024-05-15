@@ -1,3 +1,4 @@
+{{- $interactive := stdinIsATTY -}}
 {{- $email := promptStringOnce . "email" "Email address" "vader@example.org" -}}
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
@@ -22,11 +23,13 @@
 
 [data]
 encryption = "age"
+{{ if $interactive -}}
 [age]
     identity = "~/.config/chezmoi/key.txt"
     recipient = {{ onepasswordRead "op://Personal/chezmoi/public-key" | quote}}
 [onepassword]
     mode = "account"
+{{- end -}}
 [data]
     email = {{ $email | quote }}
     osid = {{ $osid | quote }}
