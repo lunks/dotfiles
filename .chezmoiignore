@@ -1,3 +1,4 @@
+.config/nvim/lazy-lock.json
 zshrc.darwin
 zshrc.linux
 README.md
