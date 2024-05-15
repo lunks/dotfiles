@@ -108,8 +108,10 @@ export FZF_DEFAULT_OPTS="--border='rounded' --preview='$FZF_PREVIEW_COMMAND' --p
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '\e[19~' autosuggest-accept
 
+{{- if eq .chezmoi.os "darwin" -}}
 eval $(ssh-agent -s) > /dev/null
 ssh-add -q
+{{ end }}
 
 function chpwd() {
   tmux rename-window $(shrink_path -f)
