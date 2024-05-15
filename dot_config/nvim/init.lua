@@ -1,5 +1,6 @@
 vim.g.mapleader = ','
 
+vim.opt.eventignore:append("FocusLost")
 vim.o.wildmode = 'longest,list:longest,full'
 vim.o.clipboard = 'unnamedplus'
 vim.o.expandtab = true
