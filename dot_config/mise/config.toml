@@ -2,6 +2,7 @@
 experimental = true
 cargo_binstall = true
 [tools]
+node = "latest"
 rust = "latest"
 "cargo:cargo-binstall" = "latest"
 "cargo:eza" = "latest"
