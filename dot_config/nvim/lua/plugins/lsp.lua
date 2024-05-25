@@ -122,6 +122,15 @@ return {
     end,
   },
   {
+    "mfussenegger/nvim-lint",
+  },
+  {
+    "rshkarin/mason-nvim-lint",
+    config = function()
+      require 'mason-nvim-lint'.setup({ quiet_mode = true })
+    end,
+  },
+  {
     "elixir-tools/elixir-tools.nvim",
     version = "*",
     filetypes = { "elixir", "heex" },

@@ -6,7 +6,7 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
-    config = function ()
+    config = function()
       require 'gitsigns'.setup {
         signs = {
           add          = { text = '＋' },
@@ -18,7 +18,7 @@ return {
         }
       }
     end
-  }, 
+  },
   {
     'Wansmer/treesj',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -28,7 +28,7 @@ return {
     opts = {
       use_default_keymaps = false,
     },
-    config = function ()
+    config = function()
       local sj = require 'treesj'
       sj.setup()
       vim.keymap.set('n', 'sj', sj.split)
@@ -39,7 +39,7 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',
-    init = function ()
+    init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,

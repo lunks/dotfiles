@@ -29,5 +29,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# direnv
+# mise
 .envrc
+.mise

@@ -19,6 +19,7 @@ then
   then
     exec tmux attach -t $session_num
   else
+    eval $(op signin)
     exec tmux
   fi
 fi
