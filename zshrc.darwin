@@ -1,3 +1,4 @@
+export SSH_AUTH_SOCK=~/.1password/agent.sock
 # Always use Tmux
 if [[ -z "$TMUX" && -z "$VIM" ]]
 then

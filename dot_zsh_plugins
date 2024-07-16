@@ -1,7 +1,9 @@
 ohmyzsh/ohmyzsh path:lib/key-bindings.zsh
 ohmyzsh/ohmyzsh path:lib/directories.zsh, kind:defer
+ohmyzsh/ohmyzsh path:plugins/aws kind:defer
 ohmyzsh/ohmyzsh path:plugins/git kind:defer
 ohmyzsh/ohmyzsh path:plugins/github kind:defer
+ohmyzsh/ohmyzsh path:plugins/kitty kind:defer
 
 zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-syntax-highlighting kind:defer
