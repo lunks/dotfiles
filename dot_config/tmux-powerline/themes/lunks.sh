@@ -1,19 +1,12 @@
 # If changes made here does not take effect, then try to re-create the tmux session to force reload.
 
-if patched_font_in_use; then
-  TMUX_POWERLINE_SEPARATOR_LEFT_BOLD=""
-  TMUX_POWERLINE_SEPARATOR_LEFT_THIN=""
-  TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD=""
-  TMUX_POWERLINE_SEPARATOR_RIGHT_THIN=""
-else
-  TMUX_POWERLINE_SEPARATOR_LEFT_BOLD="◀"
-  TMUX_POWERLINE_SEPARATOR_LEFT_THIN="❮"
-  TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD="▶"
-  TMUX_POWERLINE_SEPARATOR_RIGHT_THIN="❯"
-fi
+TMUX_POWERLINE_SEPARATOR_LEFT_BOLD=""
+TMUX_POWERLINE_SEPARATOR_LEFT_THIN=""
+TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD=""
+TMUX_POWERLINE_SEPARATOR_RIGHT_THIN=""
 
 TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR:-'235'}
-TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-'255'}
+TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-'#ffffcc'}
 
 TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR:-$TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD}
 TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR=${TMUX_POWERLINE_DEFAULT_RIGHTSIDE_SEPARATOR:-$TMUX_POWERLINE_SEPARATOR_LEFT_BOLD}
@@ -25,7 +18,7 @@ if [ -z $TMUX_POWERLINE_WINDOW_STATUS_CURRENT ]; then
   TMUX_POWERLINE_WINDOW_STATUS_CURRENT=(
   "#[fg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),bg=#f0bf4f,bold,noitalics,nounderscore]" \
     "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR" \
-    " #I#F " \
+    " #I#{?window_flags,#F, } " \
     "$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN" \
     " #W " \
     "#[bg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),fg=#f0bf4f,nobold,noitalics,nounderscore]" \
@@ -41,11 +34,15 @@ fi
 
 if [ -z $TMUX_POWERLINE_WINDOW_STATUS_FORMAT ]; then
   TMUX_POWERLINE_WINDOW_STATUS_FORMAT=(
+    "#[bg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),fg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),nobold,noitalics,nounderscore]" \
+    "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR" \
   "#[bg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),fg=#808080,nobold,noitalics,nounderscore]" \
-    "  #I#{?window_flags,#F, } " \
+    " #I#{?window_flags,#F, } " \
     "$TMUX_POWERLINE_SEPARATOR_RIGHT_THIN" \
     "#[bg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),fg=#f0bf4f,nobold,noitalics,nounderscore]" \
-    " #W "
+    " #W " \
+    "#[bg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),fg=$(__normalize_color "$TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR"),nobold,noitalics,nounderscore]" \
+    "$TMUX_POWERLINE_DEFAULT_LEFTSIDE_SEPARATOR"
   )
 fi
 
@@ -70,7 +67,7 @@ fi
 #   * - any other character/string produces no change to default behavior
 #
 # Example segment with separator disabled and right space character disabled:
-# "hostname 33 0 {TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} 33 0 right_disable separator_disable"
+# "hostname 33 0 ${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD} 33 0 right_disable separator_disable"
 #
 # Note that although redundant the non_default_separator, separator_background_color and
 # separator_foreground_color options must still be specified so that appropriate index
@@ -104,10 +101,10 @@ fi
  # ('#ffffff', '#cc0000')
  if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
    TMUX_POWERLINE_LEFT_STATUS_SEGMENTS=(
-   #"tmux_session_info #f9f5d7 #1d2021" \
-   "hostname #f9f5d7 #1d2021" \
-     #"ifstat 30 255" \
-        #"ifstat_sys 30 255" \
+   #"tmux_session_info #1c1c1c #ffffcc " \
+   "hostname_nf  #1c1c1c #ffffcc" \
+     "time #ffffcc #1c1c1c" \
+     #"ifstat_sys 30 255" \
         #"lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
         #"wan_ip 24 255" \
         #"vcs_branch 29 88" \
@@ -121,20 +118,21 @@ fi
  if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
    TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS=(
    #"earthquake 3 0" \
-   "custom_pwd #626262 #1c1c1c" \
+   "custom_pwd #585858 #d0d0d0" \
      #"macos_notification_count 29 255" \
         #"mailcount 9 255" \
         #"cpu 240 136" \
         "load #8a8a8a #303030" \
-          "now_playing #9e9e9e #121212" \
-          #"tmux_mem_cpu_load 234 136" \
+        #"ifstat_sys #ffffcc #1c1c1c" \
+          "now_playing #585858 #d0d0d0 " \
+          #"tmux_mem_cpu_load 0 0" \
                   #"battery 137 127" \
                   #"weather 37 255" \
                   #"rainbarf 0 ${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR}" \
                   #"xkb_layout 125 117" \
-                  #"date_day 235 136" \
-                  #"date 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
-                  #"time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
+                  #"date_day #ffffcc #1c1c1c" \
+                  #"date #ffffcc #1c1c1c ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
+                  #"time #ffffcc #1c1c1c" \
                   #"utc_time 235 136 ${TMUX_POWERLINE_SEPARATOR_LEFT_THIN}" \
                 )
  fi

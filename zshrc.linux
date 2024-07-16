@@ -1,5 +1,7 @@
 alias say="ssh 10.1.0.3 say"
 alias pbcopy="lemonade copy"
+alias "xdg-open"="lemonade open"
+alias open="lemonade open"
 
 alias rs="bin/rails server -b 0.0.0.0"
 export WEBPACKER_DEV_SERVER_HOST=0.0.0.0
@@ -19,7 +21,7 @@ then
   then
     exec tmux attach -t $session_num
   else
-    eval $(op signin)
+    eval "$(op signin)"
     exec tmux
   fi
 fi

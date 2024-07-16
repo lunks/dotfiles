@@ -64,7 +64,6 @@ shrink_path() {
 }
 
 run_segment() {
-        __process_settings
         echo $(shrink_path $(get_tmux_cwd))
-        return 0
+        exit 0
 }
