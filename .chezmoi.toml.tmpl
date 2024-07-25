@@ -18,6 +18,10 @@
 {{- if eq .chezmoi.arch "amd64" -}}
 {{-   $misearch = "x64" -}}
 {{- end -}}
+{{- $exercismarch := .chezmoi.arch -}}
+{{- if eq .chezmoi.arch "amd64" -}}
+{{-   $exercismarch = "x86_64" -}}
+{{- end -}}
 
 {{- if $interactive -}}
 [age]
@@ -33,6 +37,7 @@
     osid = {{ $osid | quote }}
     miseos = {{ $miseos | quote }}
     misearch = {{ $misearch | quote }}
+    exercismarch = {{ $exercismarch | quote }}
 [merge]
   command = "nvim"
   args = ["-d", "{{ "{{" }} .Destination }}", "{{ "{{" }} .Source }}", "{{ "{{" }} .Target }}"]
