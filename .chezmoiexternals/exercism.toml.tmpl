@@ -1,7 +1,0 @@
-[".local/bin/exercism"]
-type = "archive-file"
-decompress = "gzip"
-path = "exercism"
-url = {{ gitHubLatestReleaseAssetURL "exercism/cli" (printf "*%s-%s.tar.gz" .chezmoi.os .exercismarch) | quote }}
-executable = true
-refreshPeriod = "168h"
