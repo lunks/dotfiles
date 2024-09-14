@@ -38,8 +38,12 @@
   autosquash = true
 [http]
   postBuffer = 524288000
+[interactive]
+    diffFilter = delta --color-only
 [diff]
   colorMoved = default
+[merge]
+    conflictstyle = diff3
 [delta]
   features = line-numbers
   syntax-theme = gruvbox
