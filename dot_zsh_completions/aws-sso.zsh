@@ -1,6 +1,6 @@
 function update_aws-sso_completion() {
     if command -v aws-sso >/dev/null 2>&1; then
-        aws-sso completions --source > ~/.zsh_completions/_aws-sso
+        aws-sso setup completions --source > ~/.zsh_completions/_aws-sso
     fi
 }
 
