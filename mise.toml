@@ -1,0 +1,12 @@
+[tools]
+"npm:@google/gemini-cli" = "preview"
+"npm:@just-every/code" = "latest"
+"npm:playwright" = "latest"
+"pipx:aider-chat" = "latest"
+"pipx:mcp-proxy" = "latest"
+"pipx:mcp-server-fetch" = "latest"
+"pipx:postgres-mcp" = "latest"
+elixir = "1.19.0-rc.0-otp-28"
+erlang = "28.1"
+expert = "nightly"
+python = "3.13"
