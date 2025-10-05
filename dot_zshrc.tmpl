@@ -80,6 +80,7 @@ alias chmi="chezmoi edit ~/.config/mise/mise.toml"
 alias chc="chezmoi edit-config && ch init"
 alias pr="gh f -p"
 alias is="iex -S mix phx.server"
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_TMUX=1

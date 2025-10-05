@@ -1,6 +1,7 @@
 [settings]
 experimental = true
 cargo_binstall = true
+idiomatic_version_file_enable_tools = ["node"]
 [tools]
 1password-cli = "latest"
 awscli = "latest"
@@ -27,3 +28,8 @@ go = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@openai/codex" = "latest"
 "npm:mcp-hub" = "latest"
+"pipx:basedpyright" = "latest"
+"cargo:mergiraf" = "latest"
+"npm:opencode-ai" = "latest"
+"npm:@musistudio/claude-code-router" = "latest"
+"cargo:https://github.com/cola-io/codex-acp" = "latest"
